@@ -17,11 +17,11 @@ class MovieFactory extends Factory
     public function definition()
     {
         return [
-            'title'=> $this->faker->word(),
+            'title'=> $this->faker->unique()->word(),
             'director' => $this->faker->name(),
-            'imageUrl' => $this->faker->word(),
-            'duration' => $this->faker->numberBetween(10, 120),
-            'releaseDate' => $this->faker->dateTime(),
+            'imageUrl' => $this->faker->imageUrl(640, 480, 'animals', true),
+            'duration' => $this->faker->numberBetween(1, 500),
+            'releaseDate' => $this->faker->unique()->dateTime(),
             'genre' => $this->faker->word(),
         ];
     }
