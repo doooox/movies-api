@@ -14,11 +14,14 @@ class MoviesController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $movies = Movie::all();
-        return $movies;
-
+        $title = $request->query('title');
+        if ($title) {
+            return Movie::query()->searchByTitle($title)->get();
+        } else {
+            return Movie::all();
+        }
     }
 
     /**
