@@ -19,11 +19,8 @@ class MoviesController extends Controller
         $take = $request->query('take');
         $skip = $request->query('skip');
         $title = $request->query('title');
-        if ($title) {
-            return Movie::query()->searchByTitle($title)->take($take)->skip($skip)->get();
-        } else {
-            return Movie::take($take)->skip($skip)->get();
-        }
+
+        return Movie::query()->searchByTitle($title)->take($take)->skip($skip)->get();
     }
 
 
